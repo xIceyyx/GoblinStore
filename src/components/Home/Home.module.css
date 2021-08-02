@@ -1,0 +1,14 @@
+.scrollbar-on {
+  overflow: hidden;
+  padding-right: 17px;
+}
+
+.scrollbar-off {
+  overflow: hidden;
+}
+
+.show-cart-button {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
