@@ -18,7 +18,7 @@ const CartButton = (props, ref) => {
       onClick={props.onClick}
       ref={ref}
     >
-      <span>{props.text}</span>
+      {props.text}
     </Wrapper>
   );
 };
@@ -26,7 +26,7 @@ export default forwardRef(CartButton);
 
 const Wrapper = styled(Button)`
   && {
-    padding: 8px 22px;
+    padding: 8px 22px !important !important !important !important;
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -66,10 +66,6 @@ const Wrapper = styled(Button)`
       display: ${(props) => (props.theme === "light" ? "block" : "")};
       margin-top: ${(props) => (props.theme === "light" ? "0px" : "20px")};
       font-size: 12px;
-    }
-
-    span {
-      display: inline-block;
     }
   }
 `;
