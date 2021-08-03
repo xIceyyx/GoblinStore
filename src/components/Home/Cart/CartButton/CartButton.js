@@ -45,6 +45,7 @@ const Wrapper = styled(Button)`
       `
 
     max-width: max-content;
+    white-space: nowrap;
     position: fixed;
     bottom: 30px;
     left: 0;
