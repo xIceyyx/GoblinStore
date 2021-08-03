@@ -94,9 +94,10 @@ const Wrapper = styled(motion.div)`
   right: 0;
   z-index: 1000;
   background-color: #fff;
-  
-  overflow-y: scroll !important;
--webkit-overflow-scrolling: touch;
+
+  overflow-y: auto;
+
+  max-height: 100%;
 
   display: flex;
   flex-direction: column;
