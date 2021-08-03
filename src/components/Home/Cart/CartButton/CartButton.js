@@ -18,7 +18,7 @@ const CartButton = (props, ref) => {
       onClick={props.onClick}
       ref={ref}
     >
-      {props.text}
+      <pre>{props.text}</pre>
     </Wrapper>
   );
 };
