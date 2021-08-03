@@ -52,6 +52,9 @@ const Wrapper = styled(Button)`
     right: 0;
     margin: auto;
     padding: 8px 22px !important;
+      white-space: nowrap;
+    overflow: hidden;
+    
       
     @media only screen and (min-width: 600px) {
       display: none;
