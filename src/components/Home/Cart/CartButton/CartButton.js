@@ -18,7 +18,7 @@ const CartButton = (props, ref) => {
       onClick={props.onClick}
       ref={ref}
     >
-      <pre>{props.text}</pre>
+      {props.text}
     </Wrapper>
   );
 };
@@ -44,7 +44,7 @@ const Wrapper = styled(Button)`
       props.type === "absolute" &&
       `
 
-    max-width: max-content;
+    width: max-content;
     position: fixed;
     bottom: 30px;
     left: 0;
