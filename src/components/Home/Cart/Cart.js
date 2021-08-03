@@ -94,6 +94,7 @@ const Wrapper = styled(motion.div)`
   right: 0;
   z-index: 1000;
   background-color: #fff;
+  overflow: auto;
 
   display: flex;
   flex-direction: column;

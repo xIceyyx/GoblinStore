@@ -43,7 +43,7 @@ const Wrapper = styled(Button)`
     ${(props) =>
       props.type === "absolute" &&
       `
-    width: max-content;
+    max-width: max-content;
     position: fixed;
     bottom: 30px;
     left: 0;
