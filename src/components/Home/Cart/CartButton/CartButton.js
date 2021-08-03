@@ -18,7 +18,7 @@ const CartButton = (props, ref) => {
       onClick={props.onClick}
       ref={ref}
     >
-      {props.text}
+      <span>{props.text}</span>
     </Wrapper>
   );
 };
@@ -66,6 +66,10 @@ const Wrapper = styled(Button)`
       display: ${(props) => (props.theme === "light" ? "block" : "")};
       margin-top: ${(props) => (props.theme === "light" ? "0px" : "20px")};
       font-size: 12px;
+    }
+
+    span {
+      display: inline-block;
     }
   }
 `;
