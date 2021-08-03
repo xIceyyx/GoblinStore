@@ -18,7 +18,7 @@ const CartButton = (props, ref) => {
       onClick={props.onClick}
       ref={ref}
     >
-      <p>{props.text}</p>
+      {props.text}
     </Wrapper>
   );
 };
@@ -45,13 +45,12 @@ const Wrapper = styled(Button)`
       `
 
     max-width: max-content;
-
     position: fixed;
     bottom: 30px;
     left: 0;
     right: 0;
     margin: auto;
-    padding: 8px 22px !important;
+
  
     
       
@@ -63,10 +62,6 @@ const Wrapper = styled(Button)`
     &:hover {
       background-color: ${(props) =>
         props.theme === "light" ? "#d5d5d5" : "#279254"};
-    }
-
-    p {
-      display: inline-block;
     }
 
     @media only screen and (max-width: 600px) {
