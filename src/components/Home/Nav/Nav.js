@@ -55,13 +55,15 @@ const Nav = () => {
         {cartOpen && <Cart cartHandler={cartHandler} />}
       </AnimatePresence>
 
-      <CartButton
-        text={`VIEW CART (1 ITEMS)`}
-        theme={"dark"}
-        type={"absolute"}
-        onClick={cartHandler}
-        ref={mobileCartButton}
-      />
+      <F>
+        <CartButton
+          text={`VIEW CART (1 ITEMS)`}
+          theme={"dark"}
+          type={"absolute"}
+          onClick={cartHandler}
+          ref={mobileCartButton}
+        />
+      </F>
     </Fragment>
   );
 };
@@ -117,4 +119,13 @@ const Wrapper = styled.nav`
       display: none;
     }
   }
+`;
+
+const F = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  position: fixed;
+  bottom: 30px;
 `;
