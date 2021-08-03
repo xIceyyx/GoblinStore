@@ -43,8 +43,8 @@ const Wrapper = styled(Button)`
     ${(props) =>
       props.type === "absolute" &&
       `
-
     width: max-content;
+    white-space: nowrap;
     position: fixed;
     bottom: 30px;
     left: 0;
