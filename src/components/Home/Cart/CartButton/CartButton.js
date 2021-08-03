@@ -26,7 +26,7 @@ export default forwardRef(CartButton);
 
 const Wrapper = styled(Button)`
   && {
-    padding: 8px 22px !important !important !important !important;
+    padding: 8px 22px;
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -51,6 +51,7 @@ const Wrapper = styled(Button)`
     left: 0;
     right: 0;
     margin: auto;
+    padding: 8px 22px !important;
       
     @media only screen and (min-width: 600px) {
       display: none;
