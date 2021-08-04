@@ -30,6 +30,7 @@ const Carousel = () => {
             "https://cdn.merchforall.com/60a6ccb3515b6f000a9c6e7b/b8bbc332-b917-4a89-b288-1e7f67a3bd0b"
           }
           alt="slide-1-img"
+          className="slide-1__img"
         />
       </div>
       <div className="slide-2">
@@ -38,6 +39,7 @@ const Carousel = () => {
             "https://cdn.merchforall.com/60a6ccb3515b6f000a9c6e7b/e31635c3-51c2-42fb-a930-5968dcf16ed5"
           }
           alt="slide-2-img"
+          className="slide-2__img"
         />
       </div>
     </Wrapper>
@@ -52,7 +54,7 @@ const Wrapper = styled(Slider)`
   .slide-1 {
     width: 100%;
 
-    img {
+    &__img {
       width: 100%;
     }
   }
@@ -60,7 +62,7 @@ const Wrapper = styled(Slider)`
   .slide-2 {
     width: 100%;
 
-    img {
+    &__img {
       width: 100%;
     }
   }

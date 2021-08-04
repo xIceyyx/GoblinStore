@@ -1,5 +1,9 @@
 // React
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
+//
+
+// Commerce
+import { commerce } from "../../lib/commerce";
 //
 
 // Components
@@ -9,11 +13,23 @@ import Main from "./Main/Main";
 //
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+
+    setProducts(data);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <Fragment>
       <Nav />
       <Carousel />
-      <Main />
+      <Main products={products} />
     </Fragment>
   );
 };

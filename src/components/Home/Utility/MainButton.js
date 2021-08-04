@@ -10,7 +10,7 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 //
 
-const CartButton = (props, ref) => {
+const MainButton = (props, ref) => {
   return (
     <Wrapper
       theme={props.theme}
@@ -22,7 +22,7 @@ const CartButton = (props, ref) => {
     </Wrapper>
   );
 };
-export default forwardRef(CartButton);
+export default forwardRef(MainButton);
 
 const Wrapper = styled(Button)`
   && {
@@ -44,11 +44,26 @@ const Wrapper = styled(Button)`
       props.type === "mobile-cart-button" &&
       `
     width: max-content;
-       
+             
     @media only screen and (min-width: 600px) {
       display: none;
     }
     `}
+
+    ${(props) =>
+      props.type === "card-button" &&
+      `
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-radius:0px;
+     
+
+
+    `}
+
+
 
     &:hover {
       background-color: ${(props) =>

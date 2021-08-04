@@ -2,15 +2,24 @@
 import styled from "styled-components";
 //
 
-// Material UI
-
+// Components
+import Card from "./Card/Card";
 //
 
-const Main = () => {
+const Main = (props) => {
   return (
     <Wrapper>
       <div className="title-wrapper">
-        <h1>The Official Goblin Merch Store</h1>
+        <h1 className="title-wrapper__heading">
+          The Official Goblin Merch Store
+        </h1>
+      </div>
+
+      <div className="products-wrapper">
+        {props.products.length > 0 &&
+          props.products.map((product) => (
+            <Card data={product} key={product.id} />
+          ))}
       </div>
     </Wrapper>
   );
@@ -19,14 +28,21 @@ const Main = () => {
 export default Main;
 
 const Wrapper = styled.main`
+  max-width: 1290px;
   width: 100%;
+
+  margin: 0 auto;
   text-align: center;
   font-family: "Open Sans", sans-serif;
+  height: 200vh;
+  color: #000;
+  overflow: hidden;
 
   .title-wrapper {
-    padding: 27.5px 5px;
+    padding: 30px 5px;
     width: 100%;
-    h1 {
+
+    &__heading {
       //
       font-size: 24px;
       @media only screen and (min-width: 600px) {
@@ -39,8 +55,8 @@ const Wrapper = styled.main`
       @media only screen and (min-width: 1280px) {
         font-size: 30px;
       }
-
       //
+
       line-height: 41px;
       text-align: center;
       color: #263238;
@@ -49,5 +65,37 @@ const Wrapper = styled.main`
       font-weight: 700;
       letter-spacing: -1.02857px;
     }
+  }
+
+  .products-wrapper {
+    display: grid;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    column-gap: 12px;
+
+    margin: 0 auto;
+
+    //
+    width: 100%;
+    @media only screen and (max-width: 1280px) {
+      width: 85%;
+    }
+
+    @media only screen and (max-width: 960px) {
+      width: 100%;
+    }
+    //
+
+    //
+    grid-template-columns: repeat(2, minmax(20%, 1fr));
+    @media only screen and (min-width: 960px) {
+      grid-template-columns: repeat(3, minmax(20%, 1fr));
+    }
+
+    @media only screen and (min-width: 1280px) {
+      grid-template-columns: repeat(4, minmax(20%, 1fr));
+    }
+    //
   }
 `;

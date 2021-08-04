@@ -77,8 +77,7 @@ const Wrapper = styled.nav`
 
   width: 100%;
   background-color: #fff;
-
-  box-sizing: border-box;
+  // box-sizing: border-box;
 
   display: flex;
   justify-content: center;

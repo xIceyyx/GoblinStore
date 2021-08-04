@@ -7,13 +7,13 @@ import styled from "styled-components";
 //
 
 // Components
-import CartButton from "../CartButton/CartButton";
+import MainButton from "../../Utility/MainButton";
 //
 
 const MobileCartButton = (props, ref) => {
   return (
     <Wrapper>
-      <CartButton
+      <MainButton
         text={`VIEW CART (1 ITEMS)`}
         theme={"dark"}
         type={"mobile-cart-button"}
@@ -26,11 +26,13 @@ const MobileCartButton = (props, ref) => {
 export default forwardRef(MobileCartButton);
 
 const Wrapper = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
+
+  width: 100%;
   background-color: transparent;
   position: fixed;
   bottom: 30px;
   font-weight: 700;
+  z-index: 1;
 `;

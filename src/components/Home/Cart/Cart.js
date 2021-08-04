@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 //
 
 // Components
-import CartButton from "./CartButton/CartButton";
+import MainButton from "../Utility/MainButton";
 //
 
 // Framer Motion Variants
@@ -54,9 +54,9 @@ const Cart = (props) => {
             transition={{ duration: 0.125 }}
           >
             <div className="section-1">
-              <p>Shopping Cart</p>
+              <p className="section-1__heading">Shopping Cart</p>
               <RemoveShoppingCartIcon
-                className="cart-icon"
+                className="section-1__cart-icon"
                 onClick={props.cartHandler}
               />
             </div>
@@ -64,12 +64,12 @@ const Cart = (props) => {
               <h1>CART ITEMS</h1>
             </div>
             <div className="section-3">
-              <CartButton
+              <MainButton
                 text={"ADD SOMETHING ELSE"}
                 theme={"light"}
                 type={"normal"}
               />
-              <CartButton text={"CHECKOUT"} theme={"dark"} type={"normal"} />
+              <MainButton text={"CHECKOUT"} theme={"dark"} type={"normal"} />
             </div>
           </Wrapper>
         </Fragment>,
@@ -88,13 +88,13 @@ const Wrapper = styled(motion.div)`
     width: 100%;
   }
   //
+
   border-left: 2px solid #e5e5e5;
   height: 100vh;
   position: fixed;
   right: 0;
   z-index: 1000;
   background-color: #fff;
-
   overflow-y: auto;
   max-height: 100%;
 
@@ -121,20 +121,19 @@ const Wrapper = styled(motion.div)`
 
     background-color: #f5f5f5;
     border-bottom: 1px solid #e5e5e5;
-
     padding: 0 20px;
-    p {
+
+    &__heading {
       font-size: 22px;
       @media only screen and (max-width: 1280px) {
         font-size: 20px;
       }
     }
 
-    .cart-icon {
+    &__cart-icon {
       font-size: 40px;
       right: 50px;
       cursor: pointer;
-
       color: #fff;
       stroke: #000;
 
@@ -145,6 +144,7 @@ const Wrapper = styled(motion.div)`
   }
 
   .section-2 {
+    // CART ITEMS
   }
 
   .section-3 {
@@ -159,6 +159,5 @@ const Backdrop = styled(motion.div)`
   height: 100%;
   width: 100%;
   z-index: 999;
-
   background-color: rgba(0, 0, 0, 0.5);
 `;
