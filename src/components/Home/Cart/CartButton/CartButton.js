@@ -28,7 +28,7 @@ const Wrapper = styled(Button)`
   && {
     padding: 8px 22px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 28px;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
       0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
@@ -44,8 +44,7 @@ const Wrapper = styled(Button)`
       props.type === "mobile-cart-button" &&
       `
     width: max-content;
-   
-      
+       
     @media only screen and (min-width: 600px) {
       display: none;
     }

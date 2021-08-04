@@ -12,11 +12,11 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
 
   overflow-x: hidden;
 
-  min-width: 350px;
+  min-width: 375px;
 
   height: 200vh;
 

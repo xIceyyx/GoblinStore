@@ -32,4 +32,5 @@ const Wrapper = styled.div`
   background-color: transparent;
   position: fixed;
   bottom: 30px;
+  font-weight: 700;
 `;

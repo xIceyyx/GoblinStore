@@ -1,5 +1,5 @@
 // React
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import ReactDOM from "react-dom";
 //
 
@@ -43,7 +43,7 @@ const Cart = (props) => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.125 }}
           />
           <Wrapper
             variants={wrapperVariants}
@@ -51,7 +51,7 @@ const Cart = (props) => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.125 }}
           >
             <div className="section-1">
               <p>Shopping Cart</p>
@@ -125,6 +125,9 @@ const Wrapper = styled(motion.div)`
     padding: 0 20px;
     p {
       font-size: 22px;
+      @media only screen and (max-width: 1280px) {
+        font-size: 20px;
+      }
     }
 
     .cart-icon {
@@ -134,6 +137,10 @@ const Wrapper = styled(motion.div)`
 
       color: #fff;
       stroke: #000;
+
+      @media only screen and (max-width: 600px) {
+        font-size: 37.5px;
+      }
     }
   }
 
