@@ -41,14 +41,10 @@ const Wrapper = styled(Button)`
       props.theme === "light" ? "#e0e0e0" : "#38d178"};
 
     ${(props) =>
-      props.type === "absolute" &&
+      props.type === "mobile-cart-button" &&
       `
     width: max-content;
    
-   
-
- 
-    
       
     @media only screen and (min-width: 600px) {
       display: none;

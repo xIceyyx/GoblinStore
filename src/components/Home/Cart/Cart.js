@@ -155,5 +155,3 @@ const Backdrop = styled(motion.div)`
 
   background-color: rgba(0, 0, 0, 0.5);
 `;
-
-
