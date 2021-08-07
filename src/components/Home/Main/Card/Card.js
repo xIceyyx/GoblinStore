@@ -76,14 +76,14 @@ export default Card;
 
 const Wrapper = styled.div`
   //
-  width: 92.5%;
+  width: 90%;
   @media only screen and (max-width: 960px) {
-    width: 90%;
+    width: 80%;
   }
   //
 
- // padding: 0 12px;
   height: 95%;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
@@ -93,17 +93,28 @@ const Wrapper = styled.div`
   .img-wrapper {
     position: relative;
     height: 100%;
+    cursor: pointer;
+    overflow: hidden;
 
     &__img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      transform: ${(props) => props.scale && "scale(1.275)"};
+
+      // Increase size of smaller images
+      transform: ${(props) => props.scale && "scale(1.125)"};
+      //
     }
   }
 
   .card-info {
-    height: 175px;
+    //
+    height: 125px;
+    @media only screen and (max-width: 768px) {
+      height: 200px;
+    }
+    //
+
     width: 100%;
     padding-top: 10px;
 
