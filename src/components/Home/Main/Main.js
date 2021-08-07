@@ -74,9 +74,13 @@ const Wrapper = styled.main`
     align-items: center;
 
     //
-    row-gap: 125px;
+    row-gap: 130px;
+    @media only screen and (max-width: 968px) {
+        row-gap: 120px;
+    }
+
     @media only screen and (max-width: 500px) {
-      row-gap: 135px;
+      row-gap: 150px;
     }
     //
 

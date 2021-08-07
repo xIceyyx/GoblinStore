@@ -78,12 +78,11 @@ const Wrapper = styled.div`
   //
   width: 90%;
   @media only screen and (max-width: 960px) {
-    width: 80%;
+    width: 80.25%;
   }
   //
 
   position: relative;
-  //height: 95%;
 
   display: flex;
   flex-direction: column;
@@ -103,22 +102,15 @@ const Wrapper = styled.div`
       // Increase size of smaller images
       transform: ${(props) => props.scale && "scale(1.15)"};
       //
-
-      //  background-color: blue;
     }
   }
 
   .card-info {
     height: 75px;
-    @media only screen and (max-width: 768px) {
-      //    height: 200px;
-    }
 
     position: absolute;
     width: 100%;
-
     top: 100%;
-
     padding-top: 10px;
 
     &__heading {
