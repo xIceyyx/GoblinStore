@@ -82,19 +82,18 @@ const Wrapper = styled.div`
   }
   //
 
-  height: 95%;
-  overflow: hidden;
+  position: relative;
+  //height: 95%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
+  height: 100%;
+
   .img-wrapper {
-    position: relative;
-    height: 100%;
     cursor: pointer;
-    overflow: hidden;
 
     &__img {
       width: 100%;
@@ -102,20 +101,24 @@ const Wrapper = styled.div`
       object-fit: contain;
 
       // Increase size of smaller images
-      transform: ${(props) => props.scale && "scale(1.125)"};
+      transform: ${(props) => props.scale && "scale(1.15)"};
       //
+
+      //  background-color: blue;
     }
   }
 
   .card-info {
-    //
-    height: 125px;
+    height: 75px;
     @media only screen and (max-width: 768px) {
-      height: 200px;
+      //    height: 200px;
     }
-    //
 
+    position: absolute;
     width: 100%;
+
+    top: 100%;
+
     padding-top: 10px;
 
     &__heading {

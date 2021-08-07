@@ -72,7 +72,13 @@ const Wrapper = styled.main`
     justify-content: space-between;
     justify-items: center;
     align-items: center;
-    column-gap: 12px;
+
+    //
+    row-gap: 125px;
+    @media only screen and (max-width: 500px) {
+      row-gap: 135px;
+    }
+    //
 
     margin: 0 auto;
 
