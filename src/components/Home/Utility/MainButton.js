@@ -43,8 +43,7 @@ const Wrapper = styled(Button)`
     ${(props) =>
       props.type === "mobile-cart-button" &&
       `
-    width: max-content;
-             
+    width: max-content;            
     @media only screen and (min-width: 600px) {
       display: none;
     }
@@ -58,9 +57,14 @@ const Wrapper = styled(Button)`
       bottom: 0;
       width: 100%;
       border-radius:0px;
-     
+      letter-spacing: 0.02857em;
+      font-size: 20px;
+    `}
 
-
+${(props) =>
+      props.type === "card-modal-button" &&
+      `
+      width: max-content;
     `}
 
 

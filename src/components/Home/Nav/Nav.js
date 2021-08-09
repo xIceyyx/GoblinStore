@@ -24,7 +24,7 @@ import styles from "../Home.module.css";
 //
 
 const Nav = () => {
-  const [cartOpen, setCartOpen] = useState(false);
+  const [showCart, setshowCart] = useState(false);
 
   const mobileCartButton = useRef();
 
@@ -41,7 +41,7 @@ const Nav = () => {
       document.body.classList.toggle(styles["scrollbar-off"]);
     }
 
-    setCartOpen((prev) => !prev);
+    setshowCart((prev) => !prev);
   };
 
   return (
@@ -52,7 +52,7 @@ const Nav = () => {
       </Wrapper>
 
       <AnimatePresence exitBeforeEnter>
-        {cartOpen && <Cart cartHandler={cartHandler} />}
+        {showCart && <Cart cartHandler={cartHandler} />}
       </AnimatePresence>
 
       <MobileCartButton onClick={cartHandler} ref={mobileCartButton} />

@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 import MainButton from "../Utility/MainButton";
 //
 
-// Framer Motion Variants
+// Framer Motion Variables
 const backdropVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },

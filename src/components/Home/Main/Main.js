@@ -28,9 +28,8 @@ const Main = (props) => {
 export default Main;
 
 const Wrapper = styled.main`
-  max-width: 1290px;
+  max-width: 1500px;
   width: 100%;
-
   margin: 0 auto;
   text-align: center;
   font-family: "Open Sans", sans-serif;
@@ -73,25 +72,10 @@ const Wrapper = styled.main`
     justify-items: center;
     align-items: center;
 
-    //
-    row-gap: 130px;
-    @media only screen and (max-width: 968px) {
-        row-gap: 120px;
-    }
-
-    @media only screen and (max-width: 500px) {
-      row-gap: 150px;
-    }
-    //
-
     margin: 0 auto;
 
     //
-    width: 100%;
-    @media only screen and (max-width: 1280px) {
-      width: 85%;
-    }
-
+    width: 85%;
     @media only screen and (max-width: 960px) {
       width: 100%;
     }
