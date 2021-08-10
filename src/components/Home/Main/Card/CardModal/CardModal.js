@@ -134,7 +134,7 @@ const Wrapper = styled(motion.div)`
 
   //
   height: 500px;
-  @media only screen and (max-height: 600px) {
+  @media only screen and (max-height: 600px) and (min-width: 960px) {
     height: calc(100vh - 105px);
   }
   @media only screen and (max-width: 500px) {
@@ -152,6 +152,7 @@ const Wrapper = styled(motion.div)`
   font-family: Roboto, sans-serif;
   border-radius: 4px;
   max-height: 100%;
+  overflow-y: auto;
 
   //
   display: grid;
@@ -164,8 +165,8 @@ const Wrapper = styled(motion.div)`
     height: 100%;
   }
 
-  @media only screen and (max-width: 550px) {
-    grid-template-rows: 50% 50%;
+  @media only screen and (max-width: 960px) {
+    grid-template-rows: 1fr max-content;
   }
   //
 

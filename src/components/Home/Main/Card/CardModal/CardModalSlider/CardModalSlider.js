@@ -49,7 +49,7 @@ const Wrapper = styled(Slider)`
   height: 100%;
   width: 100%;
 
-  @media only screen and (max-height: 600px) {
+  @media only screen and (max-height: 600px) and (min-width: 960px) {
     min-height: 500px;
   }
 
