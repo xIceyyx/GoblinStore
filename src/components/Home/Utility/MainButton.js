@@ -59,6 +59,12 @@ const Wrapper = styled(Button)`
       border-radius:0px;
       letter-spacing: 0.02857em;
       font-size: 20px;
+
+      @media only screen and (max-width: 600px) {
+          display: block ;
+          margin-top: 0px ;
+          font-size: 16px ;
+        }
     `}
 
 ${(props) =>
@@ -94,7 +100,7 @@ ${(props) =>
     @media only screen and (max-width: 600px) {
       display: ${(props) => (props.theme === "light" ? "block" : "")};
       margin-top: ${(props) => (props.theme === "light" ? "0px" : "20px")};
-      font-size: 12px;
+      font-size: 13px;
     }
   }
 `;

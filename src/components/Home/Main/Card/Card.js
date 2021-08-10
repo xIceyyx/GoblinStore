@@ -139,7 +139,6 @@ const Wrapper = styled.div`
     grid-area: a;
     cursor: pointer;
     width: 100%;
-    overflow: hidden;
     position: relative;
     height: 100%;
 
