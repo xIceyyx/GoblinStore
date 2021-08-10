@@ -85,7 +85,11 @@ const Card = (props) => {
 
       <AnimatePresence>
         {showModal && (
-          <CardModal setShowModal={modalHandler} data={props.data} />
+          <CardModal
+            setShowModal={modalHandler}
+            data={props.data}
+            scale={props.data.name.includes("Shirt") ? "false" : "true"}
+          />
         )}
       </AnimatePresence>
     </Fragment>

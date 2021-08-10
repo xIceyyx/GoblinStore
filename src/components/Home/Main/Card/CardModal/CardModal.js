@@ -10,11 +10,11 @@ import styled from "styled-components";
 // Components
 import MainButton from "../../../Utility/MainButton";
 import CardModalSelect from "./CardModalSelect/CardModalSelect";
+import CardModalSlider from "./CardModalSlider/CardModalSlider";
 //
 
 // Material UI
 import CloseIcon from "@material-ui/icons/Close";
-
 //
 
 // Framer Motion
@@ -73,7 +73,9 @@ const CardModal = (props) => {
             transition={{ duration: 0.125 }}
           >
             <CloseIcon className="close-btn" onClick={modalHandler} />
-            <div className="section-1"></div>
+            <div className="section-1">
+              <CardModalSlider data={props.data.assets} scale={props.scale} />
+            </div>
 
             <div className="section-2">
               <p className="section-2__heading">{props.data.name}</p>
@@ -93,13 +95,28 @@ const CardModal = (props) => {
                   "Youth XL",
                 ]}
                 defaultOption={"Select size..."}
+                label={"Size"}
               />
 
-              <MainButton
-                text={`ADD TO CART`}
-                theme={"dark"}
-                type={"card-modal-button"}
+              <CardModalSelect
+                options={[
+                  "White",
+                  "Black",
+                  "Light Blue",
+                  "Charity Pink",
+                  "Grey",
+                ]}
+                defaultOption={"Select color..."}
+                label={"Color"}
               />
+
+              <div className="section-2__button-wrapper">
+                <MainButton
+                  text={`ADD TO CART`}
+                  theme={"dark"}
+                  type={"card-modal-button"}
+                />
+              </div>
             </div>
           </Wrapper>
         </Fragment>,
@@ -114,7 +131,16 @@ export default CardModal;
 const Wrapper = styled(motion.div)`
   width: 100%;
   max-width: 940px;
+
+  //
   height: 500px;
+  @media only screen and (max-height: 600px) {
+    height: calc(100vh - 105px);
+  }
+  @media only screen and (max-width: 500px) {
+    height: 100%;
+  }
+  //
 
   z-index: 1200;
   position: fixed;
@@ -125,25 +151,41 @@ const Wrapper = styled(motion.div)`
     0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
   font-family: Roboto, sans-serif;
   border-radius: 4px;
+  max-height: 100%;
 
-  display: flex;
+  //
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
+  @media only screen and (max-width: 960px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media only screen and (max-width: 550px) {
+    grid-template-rows: 50% 50%;
+  }
+  //
 
   .section-1 {
-    width: 50%;
-    background-color: red;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
   }
 
   .section-2 {
-    width: 50%;
+    width: 100%;
     background-color: #fff;
     position: relative;
     padding: 35px 20px;
     text-align: center;
+    border-radius: 4px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
 
     &__heading {
       //
@@ -158,6 +200,7 @@ const Wrapper = styled(motion.div)`
       }
       //
 
+      margin-bottom: 30px;
       font-style: normal;
       font-weight: 500;
       line-height: 28px;
@@ -175,6 +218,13 @@ const Wrapper = styled(motion.div)`
       font-style: normal;
       font-weight: 400;
       color: #546e7a;
+      margin-bottom: 30px;
+    }
+
+    &__button-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 

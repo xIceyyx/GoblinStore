@@ -64,7 +64,24 @@ const Wrapper = styled(Button)`
 ${(props) =>
       props.type === "card-modal-button" &&
       `
-      width: max-content;
+      width: 300px;
+  
+      right: 0;
+
+
+      @media only screen and (max-width: 960px) {
+      width: 75%;
+    }
+
+    && {
+        @media only screen and (max-width: 600px) {
+          display: block ;
+          margin-top: 0px ;
+          font-size: 16px ;
+        }
+    }
+
+  
     `}
 
 

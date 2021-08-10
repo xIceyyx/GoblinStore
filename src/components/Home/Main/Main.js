@@ -33,9 +33,9 @@ const Wrapper = styled.main`
   margin: 0 auto;
   text-align: center;
   font-family: "Open Sans", sans-serif;
-  height: 200vh;
   color: #000;
   overflow: hidden;
+  height: max-content;
 
   .title-wrapper {
     padding: 30px 5px;
