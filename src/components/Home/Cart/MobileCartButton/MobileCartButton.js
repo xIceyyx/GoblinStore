@@ -34,5 +34,5 @@ const Wrapper = styled.div`
   position: fixed;
   bottom: 30px;
   font-weight: 700;
-  z-index: 1;
+  z-index: 2;
 `;

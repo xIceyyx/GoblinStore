@@ -30,15 +30,13 @@ const CardModalSlider = (props) => {
 
   return (
     <Fragment>
-      {props.data.length > 0 && (
-        <Wrapper {...settings} scale={props.scale}>
-          {props.data.map((image) => (
-            <div key={image.id}>
-              <img src={image.url} />
-            </div>
-          ))}
-        </Wrapper>
-      )}
+      <Wrapper {...settings} scale={props.scale}>
+        {props.data.map((image) => (
+          <div key={image.id}>
+            <img src={image.url} alt="product" key={image.id} />
+          </div>
+        ))}
+      </Wrapper>
     </Fragment>
   );
 };
@@ -80,6 +78,7 @@ const Wrapper = styled(Slider)`
 
   div {
     height: 100%;
+    width: 100%;
 
     img {
       margin: 0 auto;

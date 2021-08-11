@@ -43,6 +43,7 @@ const Wrapper = styled(Button)`
     ${(props) =>
       props.type === "mobile-cart-button" &&
       `
+     
     width: max-content;            
     @media only screen and (min-width: 600px) {
       display: none;
@@ -58,22 +59,19 @@ const Wrapper = styled(Button)`
       width: 100%;
       border-radius:0px;
       letter-spacing: 0.02857em;
-      font-size: 20px;
+      z-index: 1;
 
-      @media only screen and (max-width: 600px) {
-          display: block ;
-          margin-top: 0px ;
-          font-size: 16px ;
-        }
+     
+      @media only screen and (max-width: 960px) {
+        display: none;
+    }
+    
     `}
 
 ${(props) =>
       props.type === "card-modal-button" &&
       `
       width: 300px;
-  
-      right: 0;
-
 
       @media only screen and (max-width: 960px) {
       width: 75%;
@@ -85,12 +83,8 @@ ${(props) =>
           margin-top: 0px ;
           font-size: 16px ;
         }
-    }
-
-  
+    } 
     `}
-
-
 
     &:hover {
       background-color: ${(props) =>

@@ -71,44 +71,51 @@ const CardModal = (props) => {
             animate="visible"
             exit="hidden"
             transition={{ duration: 0.125 }}
+            centerButton={props.data.name.includes("Pack")}
           >
             <CloseIcon className="close-btn" onClick={modalHandler} />
             <div className="section-1">
-              <CardModalSlider data={props.data.assets} scale={props.scale} />
+              {props.data.id.length > 0 && (
+                <CardModalSlider data={props.data.assets} scale={props.scale} />
+              )}
             </div>
 
             <div className="section-2">
               <p className="section-2__heading">{props.data.name}</p>
               <p className="section-2__info">{info}</p>
 
-              <CardModalSelect
-                options={[
-                  "S",
-                  "M",
-                  "L",
-                  "XL",
-                  "XXL",
-                  "XXXL",
-                  "Youth S",
-                  "Youth M",
-                  "Youth L",
-                  "Youth XL",
-                ]}
-                defaultOption={"Select size..."}
-                label={"Size"}
-              />
+              {!props.data.name.includes("Pack") && (
+                <Fragment>
+                  <CardModalSelect
+                    options={[
+                      "S",
+                      "M",
+                      "L",
+                      "XL",
+                      "XXL",
+                      "XXXL",
+                      "Youth S",
+                      "Youth M",
+                      "Youth L",
+                      "Youth XL",
+                    ]}
+                    defaultOption={"Select size..."}
+                    label={"Size"}
+                  />
 
-              <CardModalSelect
-                options={[
-                  "White",
-                  "Black",
-                  "Light Blue",
-                  "Charity Pink",
-                  "Grey",
-                ]}
-                defaultOption={"Select color..."}
-                label={"Color"}
-              />
+                  <CardModalSelect
+                    options={[
+                      "White",
+                      "Black",
+                      "Light Blue",
+                      "Charity Pink",
+                      "Grey",
+                    ]}
+                    defaultOption={"Select color..."}
+                    label={"Color"}
+                  />
+                </Fragment>
+              )}
 
               <div className="section-2__button-wrapper">
                 <MainButton
@@ -187,6 +194,7 @@ const Wrapper = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 
     &__heading {
       //
@@ -225,7 +233,8 @@ const Wrapper = styled(motion.div)`
     &__button-wrapper {
       width: 100%;
       display: flex;
-      justify-content: flex-end;
+      justify-content: ${(props) =>
+        props.centerButton ? "center" : "flex-end"};
     }
   }
 
