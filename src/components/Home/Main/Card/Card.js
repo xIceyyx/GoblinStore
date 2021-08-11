@@ -141,9 +141,11 @@ const Wrapper = styled.div`
     width: 100%;
     position: relative;
     height: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     img {
       width: 100%;
       height: 100%;
@@ -161,9 +163,11 @@ const Wrapper = styled.div`
     padding: 12px 0;
     bottom: 0;
     height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     &__heading {
       //
       font-size: 20px;

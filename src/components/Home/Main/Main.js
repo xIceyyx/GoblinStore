@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 // Components
 import Card from "./Card/Card";
+import CardSkeleton from "./Card/CardSkeleton/CardSkeleton";
 //
 
 const Main = (props) => {
@@ -16,6 +17,11 @@ const Main = (props) => {
       </div>
 
       <div className="products-wrapper">
+        {props.products.length === 0 &&
+          Array.from(new Array(5)).map(() => (
+            <CardSkeleton key={Math.random.toString(16)} />
+          ))}
+
         {props.products.length > 0 &&
           props.products.map((product) => (
             <Card data={product} key={product.id} />
