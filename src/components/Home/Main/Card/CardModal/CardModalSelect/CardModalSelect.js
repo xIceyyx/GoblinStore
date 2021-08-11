@@ -94,7 +94,7 @@ const Wrapper = styled(FormControl)`
     width: 100%;
     border-radius: 4px;
     margin-bottom: 17.5px;
-    
+
     //
     display: grid;
     justify-content: space-between;

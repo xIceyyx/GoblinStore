@@ -45,6 +45,7 @@ const Card = (props) => {
     } else {
       window.onscroll = () => {};
     }
+
     setShowModal((prev) => !prev);
   };
 
@@ -111,7 +112,6 @@ const Wrapper = styled.div`
   grid-template-areas:
     "a"
     "b";
-
   @media only screen and (max-width: 960px) {
     grid-template-rows: 450px max-content;
   }
@@ -141,11 +141,9 @@ const Wrapper = styled.div`
     width: 100%;
     position: relative;
     height: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     img {
       width: 100%;
       height: 100%;
@@ -156,7 +154,6 @@ const Wrapper = styled.div`
       //
     }
   }
-
   .card-info {
     grid-area: b;
     min-height: 100px;
@@ -164,11 +161,9 @@ const Wrapper = styled.div`
     padding: 12px 0;
     bottom: 0;
     height: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     &__heading {
       //
       font-size: 20px;
@@ -188,7 +183,6 @@ const Wrapper = styled.div`
       text-align: center;
       letter-spacing: -1.02857px;
     }
-
     &__price {
       //
       font-size: 20px;
@@ -198,7 +192,6 @@ const Wrapper = styled.div`
       @media only screen and (min-width: 960px) {
         font-size: 22px;
       }
-
       @media only screen and (min-width: 1280px) {
         font-size: 24px;
       }

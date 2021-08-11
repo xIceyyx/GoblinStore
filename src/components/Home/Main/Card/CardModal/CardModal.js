@@ -34,7 +34,7 @@ const wrapperVariants = {
 //
 
 const CardModal = (props) => {
-  const modalHandler = () => {
+  const modalHandler = (e) => {
     props.setShowModal();
   };
 
@@ -56,9 +56,8 @@ const CardModal = (props) => {
       {ReactDOM.createPortal(
         <Fragment>
           <Backdrop
-            onClick={props.setShowModal}
+            onClick={modalHandler}
             variants={backdropVariants}
-            key={Math.random().toString(16)}
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -66,7 +65,6 @@ const CardModal = (props) => {
           />
           <Wrapper
             variants={wrapperVariants}
-            key={Math.random().toString(16)}
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -171,7 +169,6 @@ const Wrapper = styled(motion.div)`
     width: 100%;
     height: 100%;
   }
-
   @media only screen and (max-width: 960px) {
     grid-template-rows: 1fr max-content;
   }
@@ -182,7 +179,6 @@ const Wrapper = styled(motion.div)`
     height: 100%;
     border-radius: 4px;
   }
-
   .section-2 {
     width: 100%;
     background-color: #fff;
@@ -190,20 +186,16 @@ const Wrapper = styled(motion.div)`
     padding: 35px 20px;
     text-align: center;
     border-radius: 4px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
     &__heading {
       //
       font-size: 24px;
-
       @media only screen and (min-width: 960px) {
         font-size: 26px;
       }
-
       @media only screen and (min-width: 1280px) {
         font-size: 28px;
       }
@@ -215,9 +207,9 @@ const Wrapper = styled(motion.div)`
       line-height: 28px;
       letter-spacing: -0.06px;
     }
-
     &__info {
       //
+
       font-size: 17px;
       @media only screen and (min-width: 960px) {
         font-size: 19px;
@@ -229,7 +221,6 @@ const Wrapper = styled(motion.div)`
       color: #546e7a;
       margin-bottom: 30px;
     }
-
     &__button-wrapper {
       width: 100%;
       display: flex;
@@ -237,7 +228,6 @@ const Wrapper = styled(motion.div)`
         props.centerButton ? "center" : "flex-end"};
     }
   }
-
   .close-btn {
     position: absolute;
     right: 12.5px;
