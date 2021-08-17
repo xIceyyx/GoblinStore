@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import Nav from "./Nav/Nav";
 import Carousel from "./Carousel/Carousel";
 import Main from "./Main/Main";
+import Footer from "./Footer/Footer";
 //
 
 const Home = () => {
@@ -28,6 +29,7 @@ const Home = () => {
       <Nav />
       <Carousel />
       <Main />
+      <Footer />
     </Fragment>
   );
 };

@@ -94,7 +94,7 @@ const CartItem = (props) => {
 
           <CloseIcon className="close-btn" onClick={removeItemFromCart} />
           <p className="product-price">
-            ${props.data.price.formatted * props.data.quantity}
+            ${(props.data.price.formatted * props.data.quantity).toFixed(2)}
           </p>
         </div>
       </Wrapper>

@@ -53,7 +53,7 @@ const Nav = (props) => {
     ) {
       // User has scrollbar
       document.body.classList.toggle(styles["scrollbar-on"]);
-      mobileCartButton.current.classList.toggle(styles["show-cart-button"]);
+    //  mobileCartButton.current.classList.toggle(styles["show-cart-button"]);
     } else {
       // User has no scrollbar
       document.body.classList.toggle(styles["scrollbar-off"]);

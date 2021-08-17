@@ -17,8 +17,7 @@ body {
   overflow-x: hidden;
 
   min-width: 375px;
-
-  height: 200vh;
+  max-height: max-content;
 
   color: #263238;
 }
