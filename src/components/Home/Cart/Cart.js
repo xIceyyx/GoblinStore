@@ -3,6 +3,10 @@ import { Fragment } from "react";
 import ReactDOM from "react-dom";
 //
 
+// Redux
+import { useSelector } from "react-redux";
+//
+
 // Styled Components
 import styled from "styled-components";
 //
@@ -17,6 +21,7 @@ import { motion } from "framer-motion";
 
 // Components
 import MainButton from "../Utility/MainButton";
+import CartItem from "./CartItem/CartItem";
 //
 
 // Framer Motion Variables
@@ -32,14 +37,19 @@ const wrapperVariants = {
 //
 
 const Cart = (props) => {
+  const cart = useSelector((state) => state.commerce.cart);
+
+  const closeCartHandler = (data) => {
+    props.cartHandler();
+  };
+
   return (
     <Fragment>
       {ReactDOM.createPortal(
         <Fragment>
           <Backdrop
-            onClick={props.cartHandler}
+            onClick={closeCartHandler}
             variants={backdropVariants}
-            key={Math.random().toString(16)}
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -47,7 +57,6 @@ const Cart = (props) => {
           />
           <Wrapper
             variants={wrapperVariants}
-            key={Math.random().toString(16)}
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -57,11 +66,13 @@ const Cart = (props) => {
               <p className="section-1__heading">Shopping Cart</p>
               <RemoveShoppingCartIcon
                 className="section-1__cart-icon"
-                onClick={props.cartHandler}
+                onClick={closeCartHandler}
               />
             </div>
             <div className="section-2">
-              <h1>CART ITEMS</h1>
+              {cart.line_items?.map((item) => (
+                <CartItem data={item} key={Math.random().toString(16)} />
+              ))}
             </div>
             <div className="section-3">
               <MainButton
@@ -83,7 +94,7 @@ export default Cart;
 
 const Wrapper = styled(motion.div)`
   //
-  width: 350px;
+  width: 375px;
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
@@ -95,8 +106,6 @@ const Wrapper = styled(motion.div)`
   right: 0;
   z-index: 1000;
   background-color: #fff;
-  overflow-y: auto;
-  max-height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -124,10 +133,14 @@ const Wrapper = styled(motion.div)`
     padding: 0 20px;
 
     &__heading {
+      //
       font-size: 22px;
       @media only screen and (max-width: 1280px) {
         font-size: 20px;
       }
+      //
+
+      font-weight: 600;
     }
 
     &__cart-icon {
@@ -144,7 +157,11 @@ const Wrapper = styled(motion.div)`
   }
 
   .section-2 {
-    // CART ITEMS
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    overflow-y: auto;
   }
 
   .section-3 {

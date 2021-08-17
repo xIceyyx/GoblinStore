@@ -7,7 +7,13 @@ import Card from "./Card/Card";
 import CardSkeleton from "./Card/CardSkeleton/CardSkeleton";
 //
 
+// Redux
+import { useSelector } from "react-redux";
+//
+
 const Main = (props) => {
+  const products = useSelector((state) => state.commerce.products);
+
   return (
     <Wrapper>
       <div className="title-wrapper">
@@ -17,15 +23,13 @@ const Main = (props) => {
       </div>
 
       <div className="products-wrapper">
-        {props.products.length === 0 &&
+        {products.length === 0 &&
           Array.from(new Array(5)).map(() => (
-            <CardSkeleton key={Math.random.toString(16)} />
+            <CardSkeleton key={Math.random().toString(16)} />
           ))}
 
-        {props.products.length > 0 &&
-          props.products.map((product) => (
-            <Card data={product} key={product.id} />
-          ))}
+        {products.length > 0 &&
+          products.map((product) => <Card data={product} key={product.id} />)}
       </div>
     </Wrapper>
   );

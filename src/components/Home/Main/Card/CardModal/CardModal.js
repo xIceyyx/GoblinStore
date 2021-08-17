@@ -1,6 +1,11 @@
 // React
-import { Fragment } from "react";
+import { Fragment, useState, useRef } from "react";
 import ReactDOM from "react-dom";
+//
+
+// Redux
+import { addToCart } from "../../../../../store/commerce-slice";
+import { useDispatch } from "react-redux";
 //
 
 // Styled Components
@@ -33,12 +38,130 @@ const wrapperVariants = {
 };
 //
 
+// Normal Variables
+const sizes = [
+  "S",
+  "M",
+  "L",
+  "XL",
+  "XXL",
+  "XXXL",
+  "Youth S",
+  "Youth M",
+  "Youth L",
+  "Youth XL",
+];
+const colors = ["White", "Black", "Light Blue", "Charity Pink", "Grey"];
+
+let info;
+
+let finalSize;
+let finalColor;
+//
+
 const CardModal = (props) => {
-  const modalHandler = (e) => {
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+
+  const selectSizeRef = useRef();
+  const selectColorRef = useRef();
+
+  const dispatch = useDispatch();
+
+  const modalHandler = () => {
     props.setShowModal();
   };
 
-  let info;
+  const setSelectedVariantHandler = (data) => {
+    if (data === "Select color...") {
+      setColor("");
+    }
+
+    if (data === "Select size...") {
+      setSize("");
+    }
+
+    sizes.forEach((size) => {
+      if (size === data) {
+        setSize(size);
+      }
+    });
+
+    colors.forEach((color) => {
+      if (color === data) {
+        setColor(data);
+      }
+    });
+  };
+
+  const addToCartHandler = () => {
+    if (
+      size === "Select size..." ||
+      size === "" ||
+      color === "Select color..." ||
+      color === ""
+    ) {
+      if (size === "Select size..." || size === "") {
+        if (selectSizeRef.current !== undefined) {
+          selectSizeRef.current.focus();
+          return;
+        }
+      }
+
+      if (color === "Select color..." || color === "") {
+        if (selectColorRef.current !== undefined) {
+          selectColorRef.current.focus();
+          return;
+        }
+      }
+    }
+
+    // Sizes
+    if (selectSizeRef.current !== undefined) {
+      props.data.variant_groups[0].options.forEach((curr) => {
+        if (curr.name === size) {
+          finalSize = curr.id;
+        }
+      });
+    }
+
+    // Colors
+    if (selectColorRef.current !== undefined) {
+      props.data.variant_groups[1].options.forEach((curr) => {
+        if (curr.name === color) {
+          finalColor = curr.id;
+        }
+      });
+    }
+
+    if (
+      selectSizeRef.current !== undefined ||
+      selectColorRef.current !== undefined
+    ) {
+      const variants = {};
+      const finalSizeKey = props.data.variant_groups[0].id;
+      const finalColorKey = props.data.variant_groups[1].id.toString();
+
+      variants[finalSizeKey] = finalSize;
+      variants[finalColorKey] = finalColor;
+
+      dispatch(
+        addToCart({
+          productId: props.data.id,
+          quantity: 1,
+          variants,
+        })
+      );
+    } else {
+      dispatch(
+        addToCart({
+          productId: props.data.id,
+          quantity: 1,
+        })
+      );
+    }
+  };
+
   if (props.data.name.toLowerCase().includes("shirt")) {
     info = "Please allow 2-3 weeks for production of this item.";
   }
@@ -85,32 +208,19 @@ const CardModal = (props) => {
               {!props.data.name.includes("Pack") && (
                 <Fragment>
                   <CardModalSelect
-                    options={[
-                      "S",
-                      "M",
-                      "L",
-                      "XL",
-                      "XXL",
-                      "XXXL",
-                      "Youth S",
-                      "Youth M",
-                      "Youth L",
-                      "Youth XL",
-                    ]}
+                    options={sizes}
                     defaultOption={"Select size..."}
                     label={"Size"}
+                    setSelected={setSelectedVariantHandler}
+                    ref={selectSizeRef}
                   />
 
                   <CardModalSelect
-                    options={[
-                      "White",
-                      "Black",
-                      "Light Blue",
-                      "Charity Pink",
-                      "Grey",
-                    ]}
+                    options={colors}
                     defaultOption={"Select color..."}
                     label={"Color"}
+                    setSelected={setSelectedVariantHandler}
+                    ref={selectColorRef}
                   />
                 </Fragment>
               )}
@@ -120,6 +230,7 @@ const CardModal = (props) => {
                   text={`ADD TO CART`}
                   theme={"dark"}
                   type={"card-modal-button"}
+                  onClick={addToCartHandler}
                 />
               </div>
             </div>
@@ -209,7 +320,6 @@ const Wrapper = styled(motion.div)`
     }
     &__info {
       //
-
       font-size: 17px;
       @media only screen and (min-width: 960px) {
         font-size: 19px;

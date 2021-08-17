@@ -1,9 +1,10 @@
 // React
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 //
 
-// Commerce
-import { commerce } from "../../lib/commerce";
+// Redux
+import { getCart, getProducts } from "../../store/commerce-slice";
+import { useDispatch } from "react-redux";
 //
 
 // Components
@@ -13,23 +14,20 @@ import Main from "./Main/Main";
 //
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-
-    setProducts(data);
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchProducts();
+    dispatch(getCart());
+    dispatch(getProducts());
   }, []);
+
+  //commerce.cart.empty();
 
   return (
     <Fragment>
       <Nav />
       <Carousel />
-      <Main products={products} />
+      <Main />
     </Fragment>
   );
 };

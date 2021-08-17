@@ -1,5 +1,5 @@
 // React
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 //
 
 // Styled Components
@@ -32,8 +32,8 @@ const useStyles = makeStyles(() => ({
 
   icon: {
     fill: "#546e7a",
-    width: "40px",
-    height: "40px",
+    width: "35px",
+    height: "35px",
     position: "absolute",
     top: "0",
     bottom: "0",
@@ -43,12 +43,13 @@ const useStyles = makeStyles(() => ({
 }));
 //
 
-const CardModalSelect = (props) => {
-  const [selectedSize, setSelectedSize] = useState(props.defaultOption);
+const CardModalSelect = (props, ref) => {
+  const [selectedValue, setSelectedValue] = useState(props.defaultOption);
   const classes = useStyles();
 
   const handleSizes = (e) => {
-    setSelectedSize(e.target.value);
+    setSelectedValue(e.target.value);
+    props.setSelected(e.target.value);
   };
 
   return (
@@ -60,13 +61,14 @@ const CardModalSelect = (props) => {
           select: `${classes.Select} dropdown`,
           icon: classes.icon,
         }}
-        disableUnderline
         MenuProps={{
           disableScrollLock: true,
         }}
-        value={selectedSize}
+        disableUnderline
+        value={selectedValue}
         onChange={handleSizes}
         IconComponent={ExpandMoreIcon}
+        inputRef={ref}
       >
         <MenuItem
           value={props.defaultOption}
@@ -89,7 +91,7 @@ const CardModalSelect = (props) => {
   );
 };
 
-export default CardModalSelect;
+export default forwardRef(CardModalSelect);
 
 const Wrapper = styled(FormControl)`
   && {

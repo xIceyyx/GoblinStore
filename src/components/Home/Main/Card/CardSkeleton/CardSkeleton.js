@@ -10,7 +10,12 @@ const CardSkeleton = () => {
   return (
     <Wrapper>
       {Array.from(new Array(1)).map((item, index) => (
-        <Skeleton animation="pulse" variant="rect" className="skeleton" />
+        <Skeleton
+          animation="pulse"
+          variant="rect"
+          className="skeleton"
+          key={Math.random().toString(16)}
+        />
       ))}
     </Wrapper>
   );
@@ -31,6 +36,6 @@ const Wrapper = styled.div`
 
   .skeleton {
     height: 100%;
-    background-color: #ccc;
+    background-color: #cdcdcd;
   }
 `;

@@ -2,12 +2,18 @@
 import { Fragment, useState, useRef } from "react";
 //
 
+// Redux
+import { useSelector } from "react-redux";
+//
+
 // Styled Components
 import styled from "styled-components";
 //
 
 // Material UI
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Badge from "@material-ui/core/Badge";
+import { makeStyles } from "@material-ui/core/styles";
 //
 
 // Components
@@ -23,8 +29,20 @@ import { AnimatePresence } from "framer-motion";
 import styles from "../Home.module.css";
 //
 
-const Nav = () => {
+// Material UI Variables
+const useStyles = makeStyles(() => ({
+  badge: {
+    fontSize: "12px",
+    "background-color": "#38D178",
+  },
+}));
+//
+
+const Nav = (props) => {
   const [showCart, setshowCart] = useState(false);
+  const classes = useStyles();
+
+  const cart = useSelector((state) => state.commerce.cart);
 
   const mobileCartButton = useRef();
 
@@ -48,7 +66,16 @@ const Nav = () => {
     <Fragment>
       <Wrapper>
         <img src="./images/logo.png" alt="logo" className="logo" />
-        <ShoppingCartIcon className="cart-icon" onClick={cartHandler} />
+        <Badge
+          badgeContent={cart.total_items}
+          color="primary"
+          className="badge"
+          classes={{
+            badge: classes.badge,
+          }}
+        >
+          <ShoppingCartIcon className="cart-icon" onClick={cartHandler} />
+        </Badge>
       </Wrapper>
 
       <AnimatePresence exitBeforeEnter>
@@ -77,7 +104,6 @@ const Wrapper = styled.nav`
 
   width: 100%;
   background-color: #fff;
-  // box-sizing: border-box;
 
   display: flex;
   justify-content: center;
@@ -97,17 +123,21 @@ const Wrapper = styled.nav`
     //
   }
 
-  .cart-icon {
-    font-size: 40px;
+  .badge {
     position: fixed;
     z-index: 999;
     right: 15px;
     cursor: pointer;
-    color: #fff;
-    stroke: #000;
+    transform: scale(1);
 
     @media only screen and (max-width: 600px) {
       display: none;
+    }
+
+    .cart-icon {
+      color: #fff;
+      stroke: #000;
+      font-size: 40px;
     }
   }
 `;
