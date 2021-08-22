@@ -154,7 +154,7 @@ const Wrapper = styled.div`
       object-fit: contain;
 
       // Increase size of smaller images
-      transform: ${(props) => props.scale === "true" && "scale(1.14)"};
+      transform: ${(props) => props.scale === "true" && "scale(1.175)"};
       //
     }
   }

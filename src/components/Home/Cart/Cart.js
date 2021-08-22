@@ -112,7 +112,7 @@ const Wrapper = styled(motion.div)`
   //
 
   border-left: 2px solid #e5e5e5;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   right: 0;
   z-index: 1000;
