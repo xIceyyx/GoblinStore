@@ -11,7 +11,7 @@
 </div>
 <br/>
   
-![demo](https://raw.githubusercontent.com/xIceyyx/GoblinStore/master/public/demo.png)
+![demo](https://cdn.discordapp.com/attachments/771433993744678972/879131020723617802/unknown.png)
 
 ## React e-commerce app using commerce.js redux and much more 🔥
 
