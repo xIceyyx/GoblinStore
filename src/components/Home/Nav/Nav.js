@@ -1,9 +1,10 @@
 // React
-import { Fragment, useState, useRef } from "react";
+import { Fragment, useRef } from "react";
 //
 
 // Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { overlayAcitons } from "../../../store/overlay-slice";
 //
 
 // Styled Components
@@ -25,10 +26,6 @@ import MobileCartButton from "../Cart/MobileCartButton/MobileCartButton";
 import { AnimatePresence } from "framer-motion";
 //
 
-// CSS
-import styles from "../Home.module.css";
-//
-
 // Material UI Variables
 const useStyles = makeStyles(() => ({
   badge: {
@@ -39,27 +36,22 @@ const useStyles = makeStyles(() => ({
 //
 
 const Nav = (props) => {
-  const [showCart, setshowCart] = useState(false);
-  const classes = useStyles();
-
-  const cart = useSelector((state) => state.commerce.cart);
-
+  // React
   const mobileCartButton = useRef();
+  //
+
+  // Redux
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.commerce.cart);
+  const showCart = useSelector((state) => state.overlay.cartActive);
+  //
+
+  // Material UI
+  const classes = useStyles();
+  //
 
   const cartHandler = () => {
-    if (
-      window.innerWidth > document.body.clientWidth ||
-      document.body.classList.contains(styles["scrollbar-on"])
-    ) {
-      // User has scrollbar
-      document.body.classList.toggle(styles["scrollbar-on"]);
-    //  mobileCartButton.current.classList.toggle(styles["show-cart-button"]);
-    } else {
-      // User has no scrollbar
-      document.body.classList.toggle(styles["scrollbar-off"]);
-    }
-
-    setshowCart((prev) => !prev);
+    dispatch(overlayAcitons.toggleCart());
   };
 
   return (

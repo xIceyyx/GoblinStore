@@ -20,9 +20,9 @@ const useStyles = makeStyles(() => ({
     fontSize: "16.5px",
   },
   Select: {
-    height: "40px",
+    height: "35px",
     ["@media (max-width:500px)"]: {
-      height: "30px",
+      height: "25px",
     },
   },
 
@@ -44,8 +44,13 @@ const useStyles = makeStyles(() => ({
 //
 
 const CardModalSelect = (props, ref) => {
+  // React
   const [selectedValue, setSelectedValue] = useState(props.defaultOption);
+  //
+
+  // Material UI
   const classes = useStyles();
+  //
 
   const handleSizes = (e) => {
     setSelectedValue(e.target.value);
@@ -73,7 +78,9 @@ const CardModalSelect = (props, ref) => {
         <MenuItem
           value={props.defaultOption}
           className={classes.DefaultMenuItem}
-          style={{ color: "#546e7a" }}
+          style={{
+            color: props.defaultOption.includes("...") ? "#546e7a" : "#000",
+          }}
         >
           {props.defaultOption}
         </MenuItem>
@@ -82,6 +89,9 @@ const CardModalSelect = (props, ref) => {
             value={option}
             className={classes.MenuItem}
             key={Math.random().toString(16)}
+            style={{
+              display: option === props.defaultOption ? "none" : "",
+            }}
           >
             {option}
           </MenuItem>

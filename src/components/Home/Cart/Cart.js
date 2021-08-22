@@ -37,7 +37,9 @@ const wrapperVariants = {
 //
 
 const Cart = (props) => {
+  // Redux
   const cart = useSelector((state) => state.commerce.cart);
+  //
 
   const closeCartHandler = (data) => {
     props.cartHandler();
@@ -70,17 +72,26 @@ const Cart = (props) => {
               />
             </div>
             <div className="section-2">
-              {cart.line_items?.map((item) => (
-                <CartItem data={item} key={Math.random().toString(16)} />
-              ))}
+              {cart.line_items
+                .slice()
+                .reverse()
+                ?.map((item) => (
+                  <CartItem data={item} key={Math.random().toString(16)} />
+                ))}
             </div>
             <div className="section-3">
               <MainButton
                 text={"ADD SOMETHING ELSE"}
                 theme={"light"}
                 type={"normal"}
+                onClick={closeCartHandler}
               />
-              <MainButton text={"CHECKOUT"} theme={"dark"} type={"normal"} />
+              <MainButton
+                text={"CHECKOUT"}
+                theme={"dark"}
+                type={"normal"}
+                disabled={cart.line_items.length === 0}
+              />
             </div>
           </Wrapper>
         </Fragment>,

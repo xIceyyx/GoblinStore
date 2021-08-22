@@ -3,11 +3,11 @@ import { Fragment } from "react";
 //
 
 // Redux
+import { useDispatch } from "react-redux";
 import {
   handleCartQuantity,
   removeFromCart,
 } from "../../../../store/commerce-slice";
-import { useDispatch } from "react-redux";
 //
 
 // Styled Components
@@ -21,7 +21,9 @@ import CloseIcon from "@material-ui/icons/Close";
 //
 
 const CartItem = (props) => {
+  // Redux
   const dispatch = useDispatch();
+  //
 
   const increaseQuantity = () => {
     dispatch(
@@ -57,8 +59,6 @@ const CartItem = (props) => {
       })
     );
   };
-
-  console.log(props.data);
 
   return (
     <Fragment>

@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 //
 
 const Carousel = () => {
+  // Normal
   const settings = {
     dots: false,
     infinite: true,
@@ -21,6 +22,7 @@ const Carousel = () => {
     arrows: false,
     autoplaySpeed: 7000,
   };
+  //
 
   return (
     <Wrapper {...settings}>

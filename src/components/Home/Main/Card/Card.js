@@ -24,8 +24,10 @@ const MotionMainButton = motion(MainButton);
 //
 
 const Card = (props) => {
+  // React
   const [showButton, setShowButton] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  //
 
   const onMouseOverHandler = () => {
     setShowButton(true);

@@ -47,7 +47,6 @@ export const handleCartQuantity = (data) => {
   return async (dispatch) => {
     const { productId, quantity } = data;
     const response = await commerce.cart.update(productId, { quantity });
-
     dispatch(commerceSlice.actions.setCart(response.cart));
   };
 };
@@ -61,5 +60,4 @@ export const removeFromCart = (data) => {
 };
 
 export const commerceActions = commerceSlice.actions;
-
 export default commerceSlice;

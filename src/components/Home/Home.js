@@ -15,14 +15,14 @@ import Footer from "./Footer/Footer";
 //
 
 const Home = () => {
+  // Redux
   const dispatch = useDispatch();
+  //
 
   useEffect(() => {
     dispatch(getCart());
     dispatch(getProducts());
   }, []);
-
-  //commerce.cart.empty();
 
   return (
     <Fragment>

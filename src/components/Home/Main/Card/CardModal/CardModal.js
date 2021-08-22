@@ -4,8 +4,9 @@ import ReactDOM from "react-dom";
 //
 
 // Redux
-import { addToCart } from "../../../../../store/commerce-slice";
 import { useDispatch } from "react-redux";
+import { addToCart } from "../../../../../store/commerce-slice";
+import { overlayAcitons } from "../../../../../store/overlay-slice";
 //
 
 // Styled Components
@@ -39,34 +40,30 @@ const wrapperVariants = {
 //
 
 // Normal Variables
-const sizes = [
-  "S",
-  "M",
-  "L",
-  "XL",
-  "XXL",
-  "XXXL",
-  "Youth S",
-  "Youth M",
-  "Youth L",
-  "Youth XL",
-];
-const colors = ["White", "Black", "Light Blue", "Charity Pink", "Grey"];
-
 let info;
-
 let finalSize;
 let finalColor;
 //
 
 const CardModal = (props) => {
-  const [color, setColor] = useState("");
+  // React
+  const [color, setColor] = useState(
+    props.data.variant_groups[1].options[0].name
+  );
   const [size, setSize] = useState("");
 
   const selectSizeRef = useRef();
   const selectColorRef = useRef();
+  //
 
+  // Redux
   const dispatch = useDispatch();
+  //
+
+  // Normal
+  const sizes = [];
+  const colors = [];
+  //
 
   const modalHandler = () => {
     props.setShowModal();
@@ -160,19 +157,33 @@ const CardModal = (props) => {
         })
       );
     }
+
+    props.setShowModal();
+    dispatch(overlayAcitons.toggleCart());
   };
 
-  if (props.data.name.toLowerCase().includes("shirt")) {
+  // Setting product info
+  if (
+    props.data.name.toLowerCase().includes("notorious") ||
+    props.data.name.toLowerCase().includes("blotter")
+  ) {
     info = "Please allow 2-3 weeks for production of this item.";
   }
 
-  if (props.data.name.toLowerCase().includes("sticker")) {
-    info = `Set of 3 stickers, all approximately 3" x 3" in size. Please allow 2-3 weeks for production of this item.`;
+  if (props.data.name.toLowerCase().includes("mugshot")) {
+    info =
+      "This item is made to order. Please allow 3-4 weeks for production of this item.";
   }
 
-  if (props.data.name.toLowerCase().includes("hoodie")) {
-    info = "Please allow 2-3 weeks for production of this item.";
-  }
+  // Sizes
+  props.data.variant_groups[0]?.options.forEach((option) => {
+    !sizes.includes(option.name) && sizes.push(option.name);
+  });
+
+  // Colors
+  props.data.variant_groups[1]?.options.forEach((option) => {
+    !colors.includes(option.name) && colors.push(option.name);
+  });
 
   return (
     <Fragment>
@@ -197,7 +208,11 @@ const CardModal = (props) => {
             <CloseIcon className="close-btn" onClick={modalHandler} />
             <div className="section-1">
               {props.data.id.length > 0 && (
-                <CardModalSlider data={props.data.assets} scale={props.scale} />
+                <CardModalSlider
+                  data={props.data.assets}
+                  scale={props.scale}
+                  activeSlideColor={selectColorRef}
+                />
               )}
             </div>
 
@@ -217,7 +232,7 @@ const CardModal = (props) => {
 
                   <CardModalSelect
                     options={colors}
-                    defaultOption={"Select color..."}
+                    defaultOption={props.data.variant_groups[1].options[0].name}
                     label={"Color"}
                     setSelected={setSelectedVariantHandler}
                     ref={selectColorRef}

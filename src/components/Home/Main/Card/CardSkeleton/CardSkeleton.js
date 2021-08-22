@@ -28,14 +28,14 @@ const Wrapper = styled.div`
   padding: 12px;
 
   //
-  height: 400px;
+  height: 375px;
   @media only screen and (max-width: 700px) {
-    height: 350px;
+    height: 325px;
   }
   //
 
   .skeleton {
     height: 100%;
-    background-color: #cdcdcd;
+    background-color: #eaeaea;
   }
 `;

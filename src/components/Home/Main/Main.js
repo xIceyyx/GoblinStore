@@ -12,7 +12,9 @@ import { useSelector } from "react-redux";
 //
 
 const Main = (props) => {
+  // Redux
   const products = useSelector((state) => state.commerce.products);
+  //
 
   return (
     <Wrapper>
@@ -24,7 +26,7 @@ const Main = (props) => {
 
       <div className="products-wrapper">
         {products.length === 0 &&
-          Array.from(new Array(5)).map(() => (
+          Array.from(new Array(8)).map(() => (
             <CardSkeleton key={Math.random().toString(16)} />
           ))}
 

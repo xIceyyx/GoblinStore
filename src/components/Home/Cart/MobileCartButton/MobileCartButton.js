@@ -15,8 +15,13 @@ import MainButton from "../../Utility/MainButton";
 //
 
 const MobileCartButton = (props, ref) => {
+  // React
   const [showButton, setShowButton] = useState(false);
+  //
+
+  // Redux
   const cart = useSelector((state) => state.commerce.cart);
+  //
 
   useEffect(() => {
     if (cart.total_items > 0) {
@@ -44,7 +49,6 @@ export default forwardRef(MobileCartButton);
 
 const Wrapper = styled.div`
   display: ${(props) => (props.showButton ? "flex" : "none")};
-  display: flex;
   justify-content: center;
 
   width: 100%;

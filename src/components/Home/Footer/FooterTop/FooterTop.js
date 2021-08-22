@@ -42,7 +42,7 @@ const Wrapper = styled.div`
   text-align: center;
   min-height: 60px;
   padding: 22px 10px;
-  padding-top: 100px;
+  padding-top: 50px;
   font-style: normal;
   font-weight: 300;
   line-height: 23px;
@@ -54,17 +54,17 @@ const Wrapper = styled.div`
   align-items: center;
 
   //
-  font-size: 18px;
+  font-size: 17px;
   @media only screen and (min-width: 600px) {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   @media only screen and (min-width: 960px) {
-    font-size: 22px;
+    font-size: 21px;
   }
 
   @media only screen and (min-width: 1280px) {
-    font-size: 24px;
+    font-size: 23px;
   }
   //
 

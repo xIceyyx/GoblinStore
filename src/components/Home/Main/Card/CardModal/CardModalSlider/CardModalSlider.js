@@ -1,5 +1,5 @@
 // React
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef } from "react";
 //
 
 // Styled Components
@@ -17,6 +17,11 @@ import "slick-carousel/slick/slick-theme.css";
 //
 
 const CardModalSlider = (props) => {
+  // React
+  const sliderRef = useRef();
+  //
+
+  // Normal
   const settings = {
     dots: true,
     speed: 500,
@@ -27,10 +32,24 @@ const CardModalSlider = (props) => {
     infinite: false,
     customPaging: () => <FiberManualRecordIcon />,
   };
+  //
+
+  useEffect(() => {
+    if (props.activeSlideColor.current) {
+      props.data.forEach(
+        (item, index) =>
+          item.filename.split(".")[0] ===
+            props.activeSlideColor.current.value
+              .split(" ")
+              .reverse()[0]
+              .toLowerCase() && sliderRef.current.slickGoTo(index)
+      );
+    }
+  }, [props]);
 
   return (
     <Fragment>
-      <Wrapper {...settings} scale={props.scale}>
+      <Wrapper {...settings} scale={props.scale} ref={sliderRef}>
         {props.data.map((image) => (
           <div key={image.id}>
             <img src={image.url} alt="product" key={image.id} />

@@ -17,6 +17,7 @@ const MainButton = (props, ref) => {
       type={props.type}
       onClick={props.onClick}
       ref={ref}
+      disabled={props.disabled}
     >
       {props.text}
     </Wrapper>
@@ -84,6 +85,15 @@ ${(props) =>
         }
     } 
     `}
+
+ 
+    ${(props) =>
+      props.disabled &&
+      `
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.26);
+`}
 
     &:hover {
       background-color: ${(props) =>
