@@ -13,9 +13,7 @@
   
 ![demo](https://github.com/xIceyyx/GoblinStore/tree/master/public/demo.png)
 
-## My Thoughts 💡
-
-React e-commerce app using commerce.js redux and much more 🔥.
+## React e-commerce app using commerce.js redux and much more 🔥
 
 ## Installation & Build 🔨
 
