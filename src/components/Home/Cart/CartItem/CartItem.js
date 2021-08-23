@@ -134,8 +134,9 @@ const Wrapper = styled.div`
   .info-wrapper {
     height: 100%;
     width: 100%;
-    padding: 5px;
+    padding: 0px;
     padding-left: 10px;
+    padding-right: 5px;
 
     display: flex;
     flex-direction: column;
@@ -177,14 +178,14 @@ const Wrapper = styled.div`
   .close-btn {
     position: absolute;
     right: 20px;
-    top: 5px;
+    top: 2.5px;
     cursor: pointer;
   }
 
   .product-price {
     position: absolute;
     right: 20px;
-    bottom: 5px;
+    bottom: 0px;
     font-weight: 600;
     font-size: 16px;
     letter-spacing: -0.06px;
